@@ -2,26 +2,24 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
 <html class="theme-next mist use-motion" lang="">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -38,37 +36,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT, Github" />
 
 
 
@@ -79,29 +46,40 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="SeanTo&#39;s blog">
-<meta property="og:url" content="https:&#x2F;&#x2F;seanto.github.io&#x2F;index.html">
-<meta property="og:site_name" content="SeanTo&#39;s blog">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
+
+
+
+
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    version: '5.1.4',
+    version: '7.0.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
-    fancybox: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -113,12 +91,32 @@
 </script>
 
 
+  
+
+
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="SeanTo&#39;s blog">
+<meta property="og:url" content="https:&#x2F;&#x2F;seanto.github.io&#x2F;index.html">
+<meta property="og:site_name" content="SeanTo&#39;s blog">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
 
   <link rel="canonical" href="https://seanto.github.io/"/>
 
 
 
-
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>SeanTo's blog</title>
   
@@ -129,6 +127,35 @@
 
 
 
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
@@ -145,23 +172,22 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">SeanTo's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <h1 class="site-subtitle" itemprop="description"></h1>
-      
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -169,35 +195,55 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Home
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/%20" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            About
-          </a>
-        </li>
+        
+          
+          <li class="menu-item menu-item-home menu-item-active">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-home&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-user&quot;&gt;&lt;&#x2F;i&gt; &lt;br&#x2F;&gt;About</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -205,12 +251,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -223,21 +277,23 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://seanto.github.io/2019/01/18/20190118-VPS%E5%9F%BA%E6%9C%AC%E5%AE%89%E5%85%A8%E8%AE%BE%E7%BD%AE/">
+    <link itemprop="mainEntityOfPage" href="https://seanto.github.io/2019/01/18/20190118-VPS%E5%9F%BA%E6%9C%AC%E5%AE%89%E5%85%A8%E8%AE%BE%E7%BD%AE/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="醉书生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="醉书生"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/head.jpg"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SeanTo's blog">
+      <meta itemprop="name" content="SeanTo's blog"/>
     </span>
 
     
@@ -247,11 +303,20 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/18/20190118-VPS%E5%9F%BA%E6%9C%AC%E5%AE%89%E5%85%A8%E8%AE%BE%E7%BD%AE/" itemprop="url">VPS基本安全设置</a></h2>
+                
+                <a href="/2019/01/18/20190118-VPS%E5%9F%BA%E6%9C%AC%E5%AE%89%E5%85%A8%E8%AE%BE%E7%BD%AE/" class="post-title-link" itemprop="url">VPS基本安全设置</a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -259,18 +324,35 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-18T22:51:42+08:00">
-                2019-01-18
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2019-01-18 22:51:42" itemprop="dateCreated datePublished" datetime="2019-01-18T22:51:42+08:00">2019-01-18</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-12-06 14:41:08" itemprop="dateModified" datetime="2019-12-06T14:41:08+08:00">2019-12-06</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -281,11 +363,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%99%E7%A8%8B/" itemprop="url" rel="index">
-                    <span itemprop="name">教程</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">教程</span></a></span>
 
                 
                 
@@ -340,12 +418,18 @@
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -378,21 +462,23 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://seanto.github.io/2019/01/17/20190117-%E5%88%A9%E7%94%A8git%E5%A4%9A%E9%87%8D%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%8A%97%E5%8D%95%E7%82%B9%E6%95%85%E9%9A%9C%E9%A3%8E%E9%99%A9/">
+    <link itemprop="mainEntityOfPage" href="https://seanto.github.io/2019/01/17/20190117-%E5%88%A9%E7%94%A8git%E5%A4%9A%E9%87%8D%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%8A%97%E5%8D%95%E7%82%B9%E6%95%85%E9%9A%9C%E9%A3%8E%E9%99%A9/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="醉书生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="醉书生"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/head.jpg"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SeanTo's blog">
+      <meta itemprop="name" content="SeanTo's blog"/>
     </span>
 
     
@@ -402,11 +488,20 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/17/20190117-%E5%88%A9%E7%94%A8git%E5%A4%9A%E9%87%8D%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%8A%97%E5%8D%95%E7%82%B9%E6%95%85%E9%9A%9C%E9%A3%8E%E9%99%A9/" itemprop="url">利用git多重远程仓库抗单点故障风险</a></h2>
+                
+                <a href="/2019/01/17/20190117-%E5%88%A9%E7%94%A8git%E5%A4%9A%E9%87%8D%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%8A%97%E5%8D%95%E7%82%B9%E6%95%85%E9%9A%9C%E9%A3%8E%E9%99%A9/" class="post-title-link" itemprop="url">利用git多重远程仓库抗单点故障风险</a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -414,18 +509,35 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-17T05:59:27+08:00">
-                2019-01-17
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2019-01-17 05:59:27" itemprop="dateCreated datePublished" datetime="2019-01-17T05:59:27+08:00">2019-01-17</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-12-08 01:28:07" itemprop="dateModified" datetime="2019-12-08T01:28:07+08:00">2019-12-08</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -436,11 +548,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%99%E7%A8%8B/" itemprop="url" rel="index">
-                    <span itemprop="name">教程</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">教程</span></a></span>
 
                 
                 
@@ -486,15 +594,15 @@
 <h3 id="添加镜像库到工作库配置文件"><a href="#添加镜像库到工作库配置文件" class="headerlink" title="添加镜像库到工作库配置文件"></a>添加镜像库到工作库配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="variable">$cd</span> /d/Work/<span class="built_in">test</span>    <span class="comment"># 到工作目录</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> pull           <span class="comment"># 先更新下本地库  </span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="variable">$vi</span> .git/config     <span class="comment"># 编辑库配置, 不熟悉vi用其它编辑器也行，要注意Windows下回车格式问题)</span></span></pre></td></tr></table></figure>
 
 <p>找到 remote 字段，局部如下：</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">[remote <span class="string">"origin"</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">        url = git<span class="variable">@github</span>.<span class="symbol">com:</span>SeanTo/test.git</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        fetch = +refs/heads/*<span class="symbol">:refs/remotes/origin/*</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">[branch <span class="string">"master"</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        remote = origin</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        merge = refs/heads/master</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">        url &#x3D; git@github.com:SeanTo&#x2F;test.git</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        fetch &#x3D; +refs&#x2F;heads&#x2F;*:refs&#x2F;remotes&#x2F;origin&#x2F;*</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">[branch &quot;master&quot;]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        remote &#x3D; origin</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        merge &#x3D; refs&#x2F;heads&#x2F;master</span></pre></td></tr></table></figure>
 <p>url 行是当前远程库的地址，该行<font color="FF0000">上面</font>按同样的格式添加一行（加好有两行 url）：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">[remote <span class="string">"origin"</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">        url = <span class="regexp">/g/</span>git/mirror.git</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        url = git<span class="meta">@github</span>.<span class="string">com:</span>SeanTo/test.git</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        fetch = +refs<span class="regexp">/heads/</span>*:refs<span class="regexp">/remotes/</span>origin<span class="comment">/*</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="comment">[branch "master"]</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="comment">        remote = origin</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="comment">        merge = refs/heads/master</span></span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">        url &#x3D; &#x2F;g&#x2F;git&#x2F;mirror.git</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        url &#x3D; git@github.com:SeanTo&#x2F;test.git</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        fetch &#x3D; +refs&#x2F;heads&#x2F;*:refs&#x2F;remotes&#x2F;origin&#x2F;*</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">[branch &quot;master&quot;]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        remote &#x3D; origin</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        merge &#x3D; refs&#x2F;heads&#x2F;master</span></pre></td></tr></table></figure>
 
 <blockquote>
 <p>就一行，挺简单的，附vi操作：<br>1.将光标定在[remote…]行上，按字母o（小写哦）进入编辑模式<br>2.下面会插入一个空行（大写O的话就插前面去了）<br>3.输入要添加的内容 url = /g/git/mirror.git<br>4.按 ESC 键退出编辑模式，按 :wq 后回车（保存退出）    </p>
 </blockquote>
 <p><font color="FF0000">这样设置就已经完成了，我们可以检查下</font></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ git remote -v</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">origin  G:/git/test.git/ (fetch)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">origin  G:/git/test.git/ (push)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">origin  git@github.com:SeanTo/test.git (push)</span></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ git remote -v</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">origin  /g/git/test.git/ (fetch)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">origin  /g/git/test.git/ (push)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">origin  git@github.com:SeanTo/test.git (push)</span></pre></td></tr></table></figure>
 
 <p>可以看到一行fetch, 两行push。<br>如有多个源，配置中加同样加多行 url 定义也只会有一行fetch。<br>本地镜像库要放在最上面，它是默认的fetch源，不需要联网，速度最快。</p>
 <h3 id="同步到镜像库"><a href="#同步到镜像库" class="headerlink" title="同步到镜像库"></a>同步到镜像库</h3><p>镜像库是空的，要先推送一次，否则 pull 抓不到东西。</p>
@@ -503,7 +611,7 @@
 <p>实际输出是连续的，中间空行是为了方便看而隔开的。<br>上半部分推到镜像库（段落倒数第二行 To G:/git/test.git/）<br>下半部分推到GitHub（To github.com:SeanTo/test.git）  </p>
 <p>提醒：事实上按前面的步骤操作的话，到这里只能看到第1部分，因为工作区的库是刚从 GitHub 上抓回来的（改配置前我们 git pull 过）再推回去时没啥改变，做示例截屏时我的设置已完成，再 push 就看到向两个源操作的结果。如果有多个源，这里就有多个类似部分。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>想说清楚一大堆，实际上就两步  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">git init --bare 建镜像裸库  </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">config 中添加 url 指向裸库地址</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">git init --bare 建镜像裸库  </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">config 中添加 url 指向裸库地址</span></pre></td></tr></table></figure>
 
 <hr>
 
@@ -511,12 +619,18 @@
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -549,21 +663,23 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://seanto.github.io/2019/01/15/20190115-Welcom/">
+    <link itemprop="mainEntityOfPage" href="https://seanto.github.io/2019/01/15/20190115-Welcom/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="醉书生">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="醉书生"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/head.jpg"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SeanTo's blog">
+      <meta itemprop="name" content="SeanTo's blog"/>
     </span>
 
     
@@ -573,11 +689,20 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/15/20190115-Welcom/" itemprop="url">Welcome to SeanTo's blog</a></h2>
+                
+                <a href="/2019/01/15/20190115-Welcom/" class="post-title-link" itemprop="url">Welcome to SeanTo&#39;s blog</a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -585,18 +710,35 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-15T02:10:23+08:00">
-                2019-01-15
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2019-01-15 02:10:23" itemprop="dateCreated datePublished" datetime="2019-01-15T02:10:23+08:00">2019-01-15</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-12-06 18:31:32" itemprop="dateModified" datetime="2019-12-06T18:31:32+08:00">2019-12-06</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -607,11 +749,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BE%AE%E5%8D%9A/" itemprop="url" rel="index">
-                    <span itemprop="name">微博</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%BE%AE%E5%8D%9A/" itemprop="url" rel="index"><span itemprop="name">微博</span></a></span>
 
                 
                 
@@ -620,6 +758,7 @@
           
 
           
+            
             
           
 
@@ -653,12 +792,18 @@
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -691,9 +836,6 @@
           </div>
           
 
-
-          
-
         </div>
         
           
@@ -716,76 +858,103 @@
 
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
                 src="/images/head.jpg"
-                alt="醉书生" />
+                alt="醉书生"/>
             
               <p class="site-author-name" itemprop="name">醉书生</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          <nav class="site-state motion-element">
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
 
-            
-              <div class="site-state-item site-state-posts">
               
-                <a href="/archives">
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
-            
 
-            
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
               
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">categories</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">tags</span>
-                </a>
-              </div>
-            
-
-          </nav>
+            </nav>
+          
 
           
 
           
             <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/SeanTo" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="mailto:tuxw2005@gmail.com" target="_blank" title="E-mail">
-                      
-                        <i class="fa fa-fw fa-envelope"></i>E-mail</a>
-                  </span>
-                
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/SeanTo" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;SeanTo" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-github&quot;&gt;&lt;&#x2F;i&gt;GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:tuxw2005@gmail.com" title="E-mail &amp;rarr; mailto:tuxw2005@gmail.com" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-envelope&quot;&gt;&lt;&#x2F;i&gt;E-mail</a>
+                </span>
+              
             </div>
           
 
-          
           
 
           
@@ -798,11 +967,11 @@
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://git-scm.com/book/zh/v2" title="Git-Book" target="_blank">Git-Book</a>
+                    <a href="https://git-scm.com/book/zh/v2" title="https:&#x2F;&#x2F;git-scm.com&#x2F;book&#x2F;zh&#x2F;v2" rel="noopener" target="_blank">Git-Book</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://gotgit.readthedocs.io/en/latest/" title="Git 权威指南" target="_blank">Git 权威指南</a>
+                    <a href="https://gotgit.readthedocs.io/en/latest/" title="https:&#x2F;&#x2F;gotgit.readthedocs.io&#x2F;en&#x2F;latest&#x2F;" rel="noopener" target="_blank">Git 权威指南</a>
                   </li>
                 
               </ul>
@@ -810,9 +979,12 @@
           
 
           
+            
+          
+          
 
         </div>
-      </section>
+      </div>
 
       
 
@@ -829,10 +1001,12 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">醉书生</span>
+
+  
 
   
 </div>
@@ -844,10 +1018,11 @@
 
 
 
-  <div class="footer-custom"><font color="808080">Powerd by</font> <a target="-blank" href="https://hexo.io/">Hexo</a>  |  <font color="808080">Theme:</font> <a target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT</a>  |  <font color="808080">Hosted by</font>   <a target="_blank" href="https://github.com">GitHub</a> <a target="_blank" href="https://pages.github.com">Pages</a></div>
+  <div class="footer-custom"><font color="808080">Powerd by</font> <a target="-blank" href="https://hexo.io/">Hexo</a>  |  <font color="808080">Theme:</font> <a target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT</a>  |  <font color="808080">Hosted by</font>   <a target="_blank" href="https://github.com">GitHub</a> <a target="_blank" href="https://pages.github.com">Pages</a></div>
 
 
         
+
 
 
 
@@ -868,11 +1043,14 @@
 
     
 
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -886,7 +1064,6 @@
 
 
 
-  
 
 
 
@@ -899,88 +1076,49 @@
 
 
 
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+
+
+
+
 
   
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+  <script src="/js/src/utils.js?v=7.0.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+  <script src="/js/src/motion.js?v=7.0.0"></script>
 
 
 
   
   
 
-  
 
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
 
 
 
 
   
 
+  
 
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
 
 
 
   
-
-
-
-
-
-
-
-
-
 
 
 
@@ -997,6 +1135,17 @@
   
 
   
+
+  
+
+  
+
+  
+
+  
+
+  
+
   
 
   
