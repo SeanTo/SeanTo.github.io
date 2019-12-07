@@ -97,6 +97,5 @@ theme: next
 deploy:
   type: git
   repo: 
-    LOCAL: /g/git/private/gitpages.git,master
     github: git@github.com:SeanTo/SeanTo.github.io.git,master
   
