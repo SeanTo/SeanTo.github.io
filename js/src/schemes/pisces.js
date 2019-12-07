@@ -3,17 +3,16 @@
 $(document).ready(function() {
 
   var sidebarInner = $('.sidebar-inner');
-  var sidebarOffset = CONFIG.sidebar.offset || 12;
+  var sidebarOffset = CONFIG.sidebar.offset ? CONFIG.sidebar.offset : 12;
 
   function getHeaderOffset() {
     return $('.header-inner').height() + sidebarOffset;
   }
 
   function getFooterOffset() {
-    var footer = $('#footer');
     var footerInner = $('.footer-inner');
-    var footerMargin = footer.outerHeight() - footerInner.outerHeight();
-    var footerOffset = footer.outerHeight() + footerMargin;
+    var footerMargin = footerInner.outerHeight(true) - footerInner.outerHeight();
+    var footerOffset = footerInner.outerHeight(true) + footerMargin;
     return footerOffset;
   }
 
@@ -23,7 +22,7 @@ $(document).ready(function() {
     var sidebarHeight = $('#sidebar').height() + NexT.utils.getSidebarb2tHeight();
     var contentHeight = $('#content').height();
 
-    // Not affix if sidebar taller than content (to prevent bottom jumping).
+    // Not affix if sidebar taller then content (to prevent bottom jumping).
     if (headerOffset + sidebarHeight < contentHeight) {
       sidebarInner.affix({
         offset: {
@@ -34,7 +33,7 @@ $(document).ready(function() {
       sidebarInner.affix('checkPosition');
     }
 
-    $('#sidebar').css({ 'margin-top': headerOffset, 'margin-left': 'auto' });
+    $('#sidebar').css({ 'margin-top': headerOffset, 'margin-left': 'initial' });
   }
 
   function recalculateAffixPosition() {
