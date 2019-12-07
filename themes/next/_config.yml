@@ -489,6 +489,13 @@ pangu: false
 # Copyright 2015-2018 GrowingIO, Inc. More info available at http://www.growingio.com
 #growingio_analytics: #your projectId
 
+# utterances 
+utterances:
+  enable: true
+  repo: SeanTo/SeanTo.github.io                  # owner/repo
+  issue_term: pathname   # pathname, url, title
+  theme: github-light    # github-light or github-dark
+
 # Disqus
 disqus:
   enable: false

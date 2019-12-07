@@ -48,6 +48,18 @@
   {% elseif theme.valine.enable and theme.valine.appid and theme.valine.appkey %}
     <div class="comments" id="comments">
     </div>
+	
+  {% elseif theme.utterances.enable %}
+    <div class="comments" id="comments">
+      <script src="https://utteranc.es/client.js"
+        repo="SeanTo/BlogComment"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </div>
+	
   {% endif %}
 
 {% endif %}
