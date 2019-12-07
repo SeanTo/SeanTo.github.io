@@ -186,7 +186,7 @@ th {
 body {
   position: relative;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 2;
   color: #555;
   background: #fff;
@@ -203,7 +203,7 @@ body {
 }
 @media (min-width: 1600px) {
   body {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 h1,
@@ -1239,7 +1239,7 @@ pre .javascript .function {
 .post-body .figure .caption {
   margin: -20px auto 15px;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   color: #999;
   font-weight: bold;
   line-height: 1;
@@ -1643,13 +1643,6 @@ pre .javascript .function {
 .fancybox-close:hover {
   border: none;
 }
-.post-copyright {
-  margin: 2em 0 0;
-  padding: 0.5em 1em;
-  border-left: 3px solid #ff1700;
-  background-color: #f9f9f9;
-  list-style: none;
-}
 .rtl.post-body p,
 .rtl.post-body a,
 .rtl.post-body h1,
@@ -1823,7 +1816,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #04f;
+  background: #a2cdff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2809,12 +2802,12 @@ hr {
 }
 @media (max-width: 767px) {
   .posts-expand .post-title {
-    font-size: 26px;
+    font-size: 22px;
   }
 }
 @media (min-width: 1600px) {
   .posts-expand .post-title {
-    font-size: 30px;
+    font-size: 26px;
   }
 }
 .posts-expand .post-title:hover:before {
@@ -2822,7 +2815,7 @@ hr {
 }
 @media (max-width: 767px) {
   .posts-expand .post-body {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 .posts-expand .post-body img {
@@ -2848,7 +2841,7 @@ hr {
 }
 .post-button a {
   padding: 0;
-  font-size: 16px;
+  font-size: 14px;
   background: none;
   border: none;
   border-bottom: 2px solid #666;
@@ -2856,12 +2849,12 @@ hr {
 }
 @media (max-width: 767px) {
   .post-button a {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 @media (min-width: 1600px) {
   .post-button a {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 .post-button a:hover {
