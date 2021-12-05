@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"seanto.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="从方案到原理，电瓶选型原则，需求计算方法，搭配合理性，采购避坑，房车&#x2F;床车&#x2F;钓鱼车加装副电瓶，看这一篇即可，有需求的建议从头看到尾，不要跳。   当然，也可以购买移动电源成品，车用家用接口都有了。缺点是性价比太低，户外充电不方便，只能作为短时出门用途，而且容量较小否则体积超大充电时搬进搬出不方便。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="循序渐进之双电瓶隔离">
+<meta property="og:url" content="https://seanto.github.io/2020/09/06/DualPower/index.html">
+<meta property="og:site_name" content="Sean&#39;s blog">
+<meta property="og:description" content="从方案到原理，电瓶选型原则，需求计算方法，搭配合理性，采购避坑，房车&#x2F;床车&#x2F;钓鱼车加装副电瓶，看这一篇即可，有需求的建议从头看到尾，不要跳。   当然，也可以购买移动电源成品，车用家用接口都有了。缺点是性价比太低，户外充电不方便，只能作为短时出门用途，而且容量较小否则体积超大充电时搬进搬出不方便。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://seanto.github.io/images/DP1.png">
+<meta property="og:image" content="https://seanto.github.io/images/DP2.png">
+<meta property="og:image" content="https://seanto.github.io/images/DP3.png">
+<meta property="og:image" content="https://seanto.github.io/images/DP4.png">
+<meta property="article:published_time" content="2020-09-05T17:33:17.000Z">
+<meta property="article:modified_time" content="2021-12-02T14:31:09.842Z">
+<meta property="article:author" content="Sean">
+<meta property="article:tag" content="磷酸铁锂">
+<meta property="article:tag" content="18650">
+<meta property="article:tag" content="双电瓶">
+<meta property="article:tag" content="房车">
+<meta property="article:tag" content="床车">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://seanto.github.io/images/DP1.png">
+
+<link rel="canonical" href="https://seanto.github.io/2020/09/06/DualPower/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh_CN'
+  };
+</script>
+
+  <title>循序渐进之双电瓶隔离 | Sean's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Sean's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">任何能让你变得更好的事情，过程都是痛苦的</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_CN">
+    <link itemprop="mainEntityOfPage" href="https://seanto.github.io/2020/09/06/DualPower/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Sean">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sean's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          循序渐进之双电瓶隔离
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-09-06 01:33:17" itemprop="dateCreated datePublished" datetime="2020-09-06T01:33:17+08:00">2020-09-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-12-02 22:31:09" itemprop="dateModified" datetime="2021-12-02T22:31:09+08:00">2021-12-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DIY/" itemprop="url" rel="index"><span itemprop="name">DIY</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <hr>
+<p>从方案到原理，电瓶选型原则，需求计算方法，搭配合理性，采购避坑，房车/床车/钓鱼车加装副电瓶，看这一篇即可，有需求的建议从头看到尾，不要跳。  </p>
+<p>当然，也可以购买移动电源成品，车用家用接口都有了。缺点是性价比太低，户外充电不方便，只能作为短时出门用途，而且容量较小否则体积超大充电时搬进搬出不方便。</p>
+<span id="more"></span>
+
+<h2 id="简单并联副电瓶"><a href="#简单并联副电瓶" class="headerlink" title="简单并联副电瓶"></a>简单并联副电瓶</h2><p>选用同型号的副电瓶直接并联，用行车发电机充电，同放同充，相当于一个更大的电瓶，简单方便。  </p>
+<p>适合主电瓶容量很小比如只有40AH，这样简单并一个电瓶成为80Ah，平时使用不必那么小心翼翼，停车听会歌都提心掉胆。</p>
+<p>但加装大容量电瓶不能简单处理，因为发电机的能力是有限的，同时给俩电瓶充电可能会超载。轻则行车用电不足导致车辆抖动（行车电脑、喷油、点火都是要用电的，任一环掉链子都会罢工），重则熄火或烧毁发电机（假如此时正在高速上行车…）</p>
+<p>所以这只是个引子，介绍下原理，非实用的可选方案。</p>
+<h2 id="双电瓶手动隔离"><a href="#双电瓶手动隔离" class="headerlink" title="双电瓶手动隔离"></a>双电瓶手动隔离</h2><p>选用铅酸副电瓶，与主电瓶并联，中间加直流空开放在座位边。  </p>
+<p>空开平时断开，副电瓶作为生活用电来源，不影响主电瓶。<br>行车时发电机给主电瓶充满后手动合上空开，给副电瓶充电。<br>一天开车几个小时的话，不担心没电用。 </p>
+<p><img src="/images/DP1.png" alt="手动隔离（如首页不显示图片，点开文章可显示）"></p>
+<ol>
+<li>S0 为直流空开，电流选大点，作手动开关用</li>
+<li>F1 作用是防止生活用电短路或过载，保护主电瓶和发电机<br>其电流要根据发电机富余电流选择，小了老熔断，大了无保护作用</li>
+</ol>
+<blockquote>
+<p>什么是发电机富余电流？<br>保证行车用电，大灯、空调等必要电器后，还有多少电流能给电瓶充电，不同的车辆是不同的</p>
+</blockquote>
+<p>此方案对户外用电需求不大时可以满足，手机、平板、无人机、笔记本，甚至烧烧开水、煮煮方便面、小功率的电饭煲都是可以的。但停留一两天不动的话是不够用的。 </p>
+<blockquote>
+<p>根据墨菲定律，只要存在忘记的可能，就一定会有忘记的时候。<br>如果忘了合上充电还好，但要停车时忘了断开，生活用电将主电瓶给拉光了车子在野外抛锚就有得乐了。<br>所以这仍然不是推荐方案，但可以实用，只是局限性较大。</p>
+</blockquote>
+<h2 id="双电瓶自动隔离"><a href="#双电瓶自动隔离" class="headerlink" title="双电瓶自动隔离"></a>双电瓶自动隔离</h2><p>此方案是目前大多数房车/床车（房车用的还多一点）所采用的方案，不同的只是副电瓶的大小选择而已，电路、配件或有区别，但原理是相同的。  </p>
+<p><img src="/images/DP2.png" alt="自动隔离（如首页不显示图片，点开文章可显示）"></p>
+<ol>
+<li>通过RP1检测电瓶电压，满电后KT1导通，K1延时接通给副电瓶充电；停车熄火后，主电瓶电压会往下掉，KT1断开导致K1断开，断开副电瓶的连接，完成自动通断功能。</li>
+<li>S1 是借电启动按钮，主电瓶亏电时，可以借副电瓶启动（但这里有个很大的坑，后面再说）</li>
+<li>S0 日常合上，长时间停车时手动断开。</li>
+</ol>
+<blockquote>
+<p>调试步骤</p>
+<ol>
+<li>延时继电器KT1时间调到0，多圈电位器RP1阻值调到最大  </li>
+<li>不要接副电瓶，启动车辆  </li>
+<li>等待主电瓶充满（车充、MP3等都可以显示电瓶电压）</li>
+<li>往下调RP1，直至KT1导通（LED指示灯E1会亮） </li>
+<li>继续往下调2-5圈 </li>
+<li>车辆熄火，观察电瓶电压，在13.5V以下时KT1断开为宜<br>不合适则继续调RP1</li>
+<li>KT1时间调节到30秒以上，接上副电瓶</li>
+</ol>
+</blockquote>
+<p>如图配置大概可以提供最大 800Wh 的电能输出，可应付短期的户外活动。100W 的车载电饭锅，煮一人饭量大概30-40分钟，煮几顿是没问题的。小型的电磁炉炒个菜也可以应对。但要维持一只车载冰箱却是不够的，除非只供冰箱其它都不用电可能勉强坚持24小时。  </p>
+<p>个人以为户外活动，冰箱是最重要的电器。没有它，你多带食材，天热会坏掉。<br>当然，顿顿煮方便面，每天开车充充电，在外坚持一周十天也不是不可以啊？来野外玩是休闲和放松，不是去做苦行僧挑战极限，家里空调房睡觉不香？  </p>
+<p>那可以加大副电瓶啊？是可以，但总有上限，不同的车发电机能力不一样，有些车可能 200Ah 甚至 300Ah 也能带动，但 100Ah 是个保险的数值，太大的话直接充电可能会出问题，要改造充电电路。<br>而且铅酸电瓶加大后体积重量都非常可观，对床车/钓鱼车有限的空间来说，不现实。<br>那怎么办？换锂电瓶。</p>
+<h3 id="改装作坊说自动隔离模块全智能，手动开关没有必要"><a href="#改装作坊说自动隔离模块全智能，手动开关没有必要" class="headerlink" title="改装作坊说自动隔离模块全智能，手动开关没有必要"></a>改装作坊说自动隔离模块全智能，手动开关没有必要</h3><ol>
+<li>任何自动控制都要考虑万一失效怎么办？  </li>
+<li>对富余电流不足的车型，夜晚开大灯又开空调时，可以手动关掉，以保证行车用电。白天行车时才打开交给自动控制。  </li>
+<li>预见一段时间几乎不用电时，充满副电瓶后可以关掉，偶尔打开补补电即可。不用时检测电路也是要消耗主电瓶电量，长时间不启动的话这个消耗也不可忽视。  </li>
+</ol>
+<h3 id="双电瓶隔离智能模块"><a href="#双电瓶隔离智能模块" class="headerlink" title="双电瓶隔离智能模块"></a>双电瓶隔离智能模块</h3><ol>
+<li>这个可以采用，但要选对合适配件。接线安装省事，数字化设置启停截止电压，非常方便。但仅此而已，省的是一次性的工作。<br>图中虚线框部分封闭在盒子里，引出A，B，C三点，就是个最简单的“智能”模块。  </li>
+<li>这类模块低的二三百，高的一二千，都是暴利，其实原理和功能跟上图一样一样的，只是加了个壳和电压显示而已。但这种东西放发动机舱里，平时看不见，外观附加值不实用。<br>如果产品做好还说得过去，但有些是要害命的。车上电压低，所以电流都很大，有些模块就引出三个10平方的线头，这种就完全是坑钱还坑人。主副电瓶间的充电主线至少要16平方起最好25以上，模块一定要引出M8或M6铜柱，引线的不要。总之，接线头就是要傻/大/粗。  </li>
+<li>我见过某模块，引出线目测10平方，里面的继电器用的十几块的通用继电器，通过电流不会超过30A，这种只能用在开始介绍的简单并联中的小铅酸电瓶，但介绍中没有任何提示，同样也敢叫智能双电瓶隔离器。</li>
+<li>个人建议控制电路越简单越好，关键是K1要买好点。选个顶级品牌200A的继电器，也就200来元吧，普通的几十块。将钱花在平时看不见的外观和所谓智能板上，核心器件却是个缩水货，我所不取也。</li>
+</ol>
+<h3 id="“借电启动”坑"><a href="#“借电启动”坑" class="headerlink" title="“借电启动”坑"></a>“借电启动”坑</h3><ol>
+<li>模块上的借电开关一般是控制KT1，而不是直接代替K1，这在电瓶完全亏电时是不起作用的（智能模块里有个小的单片机程序在检测电压，如果亏电到模块都不能启动了，它是没办法去控制K1的），坑之一。</li>
+<li>即使如图开关直接代替K1，但问题会出在线路和保险F1上。F1防后级短路，保护原车，所以其电流是略大于发电机的富余输出电流。但启动车辆时，电流往往高达300A，即使短时间内线受得了，F1也一定会熔断（不断的是因为质量不好），坑之二。</li>
+<li>非要借电启动也可以有方案的，但主电瓶亏电是小概率事件，为此增加判断切换电路是不划算的。也许平时不用，偶一次要用时切换电路却坏了（发动机舱温度环境对器件是个考验），那就尴尬了。<br>可以准备两个保险，大保险平时不用，要借电时临时启用就可以了。<br>后面的方案中就采用了并联的自恢复保险的方式。</li>
+<li>事实上个人并不推荐直接“借电启动”，对主副电瓶间的线压力太大了。可以手动接通并联保险，让副电瓶给主电瓶充电5-10分钟，断开，再去启动车辆，不行重来充电时间再加长点。</li>
+<li>就你坑多，用的人为什么都没事？主电瓶亏电是小概率事件，敢玩改装车的对电瓶也更有保护意识，发生的概率就更低了。真有发生而没事的，要么F1配得很大（失去保护作用），要么F1质量不好（该熔断时不断），要么根本没配保险（无良坑）。</li>
+</ol>
+<h2 id="磷酸铁锂电池"><a href="#磷酸铁锂电池" class="headerlink" title="磷酸铁锂电池"></a>磷酸铁锂电池</h2><p>前面都是采用铅酸副电瓶，优点是成本低、成熟度高、安全性好、周边电路简单可靠，缺点是体重大、充电慢、放电效率低。 </p>
+<p>传统意义上的锂电池为锂离子锂电池或聚合物锂电池，它跟铅酸电池各种指标完全相反是两个极端。<br>价格贵、不成熟、安全性差，重量轻、体积小、充放电效率高。  </p>
+<p>而磷酸铁锂电池各方面都中庸一点（它们都可以叫锂电池，但一般称铁锂以示区别）。</p>
+<ul>
+<li>锂电200℃就会自燃，铁锂耐温至少500℃，好的到800℃自燃。  </li>
+<li>锂电受到冲击穿刺大概率会自燃甚至爆炸，铁锂则大多只是冒烟。</li>
+<li>同等标称容量，铁锂重量是铅酸三分之一。  </li>
+<li>100Ah的电瓶，铅酸能放出60Ah就算比较好的，铁锂能放出80Ah，效率要高很多。  </li>
+</ul>
+<p>正因为它各方面比较均衡，相较铅酸电池又有较大的优势，个人改装床车逐渐成为首选，但业余爱好者对行车发电机与铁锂的充电匹配没有成熟的方案，找改装作坊，价高坑还多。    </p>
+<h2 id="锂电池充电有何难点"><a href="#锂电池充电有何难点" class="headerlink" title="锂电池充电有何难点"></a>锂电池充电有何难点</h2><ol>
+<li>行车发电机是为铅酸电池适配的，直接充锂电不合适</li>
+<li>锂电内阻小，亏电时直充电流会非常大（跟短路也差不多），会影响发电机寿命和行车用电安全，甚至烧线。</li>
+<li>锂电对充电方式有求，不能直接给个电压就完事了，一般是先恒流快充，再恒压慢充，再浮充保持。</li>
+<li>锂电瓶配的“专用”充电器一般是220V输入的，直流充电器较少见，所以行车充电成为难点</li>
+</ol>
+<h3 id="有人反驳，我车上就是直接充的几个月了什么问题没有"><a href="#有人反驳，我车上就是直接充的几个月了什么问题没有" class="headerlink" title="有人反驳，我车上就是直接充的几个月了什么问题没有"></a>有人反驳，我车上就是直接充的几个月了什么问题没有</h3><p>首先你可能买的是“假锂电”，其次你的锂电不一定能充饱，再次锂电的寿命会下降。  </p>
+<p>我们见到的成品锂电瓶其实应该称为锂电池组。铁锂电芯电压为3.2V，需要4块串联才能组成12V的电瓶，要加大容量则先并联再串联。但因为电芯的不一致性，可能其中一块已经要撑死了，另外一块还饿着，容易造成容量充不满、发热、减寿等现象。所以需要一个电池管理系统BMS（特斯拉的强项），俗称保护板/均衡板。  </p>
+<p>保护板目前没有行业标准和官方批量，多是民间电子高手自行研制的，从几十到上千的都有，一般人难以选择。保护板有几个重要的参数，持续放电电流，最大充电电流，这两个是正相关的，一般持续放电电流是最大电充电流的2倍左右。  </p>
+<p>买一个200Ah的电瓶（成品电瓶都会内置保护板，给个接口你外置的是不负责的，跟我自组电瓶有何区别？），但商家内置个30A甚至20A的保护板，直充当然问题不大（不会拉死发电机了），只是特别慢，而且发热大。但你的稳定放电可能只有80A了，最大只能输出1KW的功率，好多电器都带不动（你说这算不算“假”锂电）。而好的保护板，可以稳定放出200A的电流，带2KW电器轻轻松松。 </p>
+<blockquote>
+<p>还一种可能是给你配的“异口”保护板，这种只能慢充，只能慢充，只能慢充。<br>一个电瓶宣称支持充电器、行车发电机、光伏板同时充电，一定是慢充。不要买，不要买，不要买（除非你不用大功率电器，那你买锂电干嘛，便宜的铅酸它不香么）<br>前面图中的电瓶都是“同口”充电的，就是放电和充电是同一组接线端子，这种是支持大电流快充的。只要散热达标，甚至可以1C充电（200Ah的电瓶，用200A的电流充电，1小时充满）。但不要真这么做，车上散热条件达不到。所以要控制充电电流，一般让它3-5小时充满比较合适。</p>
+</blockquote>
+<p>这种可以“直充”的电瓶，看似解决了充电问题，却限制了电瓶的能力。而且简单粗爆的充电方式对锂电池相当不友好。（每次有手机电池爆炸新闻，商家就归咎于劣质充电器，是有原因的，很多便宜的充电器看似用起来一样，没什么问题，但埋下的定时炸弹不知保时发作）</p>
+<blockquote>
+<p>说到保护板/均衡板，科普下硬知识，有自组电瓶想法的可以看看</p>
+<ol>
+<li>主要是均衡串联电路中每块电池的电压使其保持一致</li>
+<li>电路很多，常见的两类：旁路消耗法和能量转移法</li>
+<li>对电压高的电池，启动一个旁路让它耗电降压，是为旁路消耗法</li>
+<li>对电压高的电池，让它给其它电池充电，是为能量转移法<br>为什么称为转移而不是充电？一般是并一个电容上去给它降压，然后断开电容再并到缓冲电容上，再断开，负责另一电池的电容并到缓冲电容上借电，断开，回去给相应电池充电。通过中间电容将一个电池的能量转换到另一个电池。这个方法几乎没有损耗，所以效率高发热小。但串联较多时，电路非常非常复杂。保护板价格较高，不适合个人自制，只能购买。</li>
+<li>旁路消耗法效率较低发热大。但价格便宜，电路简单，个人都可以焊接。（可能有人说我这种方法发热不大呀，那是你的电芯一致性非常高，这种极品电芯，别说个人，对厂家都是可遇不可求的）</li>
+</ol>
+</blockquote>
+<h2 id="实用方案之铁锂电瓶隔离"><a href="#实用方案之铁锂电瓶隔离" class="headerlink" title="实用方案之铁锂电瓶隔离"></a>实用方案之铁锂电瓶隔离</h2><p>废话和铺垫这么多，终于看到方案了。</p>
+<p><img src="/images/DP3.png" alt="自动隔离（如首页不显示图片，点开文章可显示）"></p>
+<p>主体结构和自动隔离篇相同，只是副电瓶铅酸换铁锂，充电方式略有不同。</p>
+<p>先补充下前面的借电坑，F0是自恢复保险，可以手动接通和跳掉。需要借电时将其接通，副电瓶反充一段时间，断开，再去发动汽车，这样比直接用副电瓶发动汽车好，主副电瓶连线不用承受过大的电流。 (那F1为什么不采用自恢复型呢？当然也可以，但熔断型体积小更容易安装) </p>
+<ol>
+<li>发电机直流电过来没有直接给副电瓶，而是进了太阳能控制器A3，由A3管理充电，过充过放保护都有了。A3选PWM型即可，MTTP的用不上浪费。要求是电流大、能充铁锂电瓶、能接受直流电压输入（部分控制器只能给铅酸充电，有的明确标明只能接受光伏板输入，这些不适合此用法）</li>
+<li>市电充电器也进了A3，这两种充电方式不会同时发生，可以直接并在一起。</li>
+<li>采用太阳能控制器，接入市电或行车充电时，直流负载是不使用电瓶的，A3会优先给负载供电，有剩余的再充给副电瓶。如果负载用电大没有剩余，它又会从副电瓶取电一起给负载供电。</li>
+<li>K2 类似于UPS不间断电源的自动切换功能。接入市电时，它会断开逆变器，家用电器由市电供电。同时它也会断开行车发电机的隔离电路，防止临时发动车辆，两个电源太积极抢着要去充电而打架。</li>
+<li>正常房车上的市电充电方式一般是有个交流充电器，市电进充电器，充电器再进电瓶。但专用充电器一般电流不高，大多设置为电瓶容量的1/10，需要10-12小时才能充满。而大功率的交流充电器可选择不多，价格也贵到怀疑人生（除非质量很差），有些都赶上一个电瓶的价格了。<br>而所谓的“专用”充电器其实就是一个开关电源+充电管理保护电路而已。<br>这里专用充电器功能进行拆分，开关电源只负责供应能量（它自己也有过载短路等保护的），将充电管理保护交给太阳能控制器。大功率的开关电源就太多选择了，丰俭由人，坏了购买更换也快。市电接通时，U3既是充电器，也是电源。</li>
+<li>U3根据设计的充电电流（取决于发电机富余电流）选择功率，比计算值高一点。输出要能微调，略高于12V（太阳能控制器一般能接受的下限是12V）。</li>
+<li>虚线框中的 U4，A4 为可选配置。太阳能效率太低，房车车顶面积大可以配，毕竟不花钱且源源不断，蚊子腿子也是肉嘛，面积大点天气好积少成多充电量也是很可观的。床车就不要考虑了，留在那里只是为了以后自组移动太阳能板。A4的选择就比较普通了，要求能给铁锂充电，PWM或MTTP都行，理论上MTTP稍好，但效率主要受光照条件影响，MTTP的一点点提升小功率时意义不大。</li>
+<li>如果只是小功率的移动太阳能板，只能停车充电。这种方式可以从A3上接出两插头放着，要用的时候插上就行了（断开手动隔离S0，防止临时发动车辆时打架）。画上A4只是为了方案完整。</li>
+<li>逆变器A1，根据自己的电器功率和电瓶的输出功率选，计算的是额定功率。去马云家买，要注意行业习惯虚标峰值功率，实际能用的只有标称值的一半。比如要用1.5KW的热水壶，得买3.0KW以上的逆变器。另外逆变器够用就行，不是越大越好，这玩艺本身耗电不小，即使后面没有用电器，只要它开着，耗电量可赶上一台车载冰箱。所以不用交流时一定要将它关掉，随用随开。</li>
+<li>库仑计A5，可选配置。最好选无线方式的，放在中控台，可以随时观察副电瓶状态。</li>
+</ol>
+<blockquote>
+<p>本方案电瓶可以根据需要增加，电路不需要修改，只需按实际情况调整器件耐流值。适应多数户外情况，蒸饭炒菜烧水都可以。但无论电瓶多大，户外用电总是要合理节约，停一个地方不动，再大的电瓶也是不够用的。<br>碰到充电桩时，停车充电，去领略下当地的风土人情，逛下超市回来基本就充好了。</p>
+</blockquote>
+<h2 id="土豪懒人方案"><a href="#土豪懒人方案" class="headerlink" title="土豪懒人方案"></a>土豪懒人方案</h2><p>看了前面一大堆接线，这个是不是耳目一新啊。超级简单就是它最大的优点。但是多功能的东西需要平衡，一般各单项肯定都不是最好的。  </p>
+<p>这个图中没有画太阳能接线方式，我对这种多功能模块兴趣不大，没仔细研究它能不能直接接太阳能并联充电，但想回它肯定是有解决方案的，这里就不细究了。  </p>
+<p><img src="/images/DP4.png" alt="土豪方案（如首页不显示图片，点开文章可显示）"></p>
+<ol>
+<li>此方案土豪的不是价格，会高一些但不离谱（毕竟多功能大都是中庸东西）。而是配件比较小众，可选择性很少，组合方案不自由。比如U3，如果它只有30A的，你的大电池想快速充电也没办法，A1一体机，可选档位也少，如果只有2KW的，你3KW的电器就没办法使用（再加东西又没了简单的优势）。如果U3只有充铅酸的，你就不能使用锂电。选择少就限制多。</li>
+<li>一旦出现故障，因为小众，采购周期较长，这在户外是不能忍受的，那么只有多买一份备件放着，这个价格就上去了而且还占地方。  </li>
+<li>多功能的体积较大，外形可选择少，对空间有限的床车就不能自由组合，空间损失没有办法。比如想放座位底下，但它没有合适的尺寸可选。</li>
+<li>集成度太高，一点小问题就整个模块当机导致不能用电，只能待修或换，这个行为就比较土豪了。比如现在手机都是电池一体，一旦电池不行了，对大多数人来说，只能换一部手机，即使手机本身还能用。前面的方案配件都是大路货，随时可以买到。无论你在何处，都可以让马云爸爸就近仓库发给你，大多次日就能收到。</li>
+<li>但如果它能组合出的方案正好满足自己的使用需求，它就不失为一个最佳方案。</li>
+</ol>
+<h2 id="最小需要多大的电瓶"><a href="#最小需要多大的电瓶" class="headerlink" title="最小需要多大的电瓶"></a>最小需要多大的电瓶</h2><p>根据自己的用电器最大功率，但为了节约用户，优先选择直流电器，交流电器不要太大功率。在外面常见的大功率电器就是热水壶、吹风机，多在1.5-1.8KW，以此为例。</p>
+<ol>
+<li><p>电瓶持续放电电流 ≥ 1800W ÷ 12V = 150A，再放到 1.2-1.5倍，电瓶要能放电200A。（这是放电能力，决定能带多大的电器，不是电瓶容量，容量决定能用多久）</p>
+</li>
+<li><p>计算户外需要长时间使用的电器功率，比如冰箱、做自媒体的有各种拍摄器材，钓鱼的有增氧泵夜钓灯之类。冰箱50W，启停工作，算它持续功率40W，一天需要 40*24=960Wh。其它电器假如每天需要共500Wh，这样共 1500Wh。<br>电瓶容量至少得 1500 ÷ 12 * 1.2 = 150Ah，还完全不能干其它事情，少说也得个12V200Ah的。</p>
+</li>
+</ol>
+<blockquote>
+<p>晚上用空调呢？<br>这个……还是不要任性了，房车都不能满足这个需求。12V600Ah的电瓶，只给空调用，都不敢开整晚的（有车主说我就是600Ah，可以开整晚啊，那得看整晚是怎么定义的，有人睡5小时就算是整晚，我觉得10-12小时才算整晚啊）。  </p>
+</blockquote>
+<h2 id="要不要上800-1000的大电瓶"><a href="#要不要上800-1000的大电瓶" class="headerlink" title="要不要上800/1000的大电瓶"></a>要不要上800/1000的大电瓶</h2><p>先看补电是否方便？再看平时的使用率有多高？</p>
+<ol>
+<li>如果去野外少经常有使用充电桩的机会，在资金允许，车子空间允许情况下，当然大一点好。  </li>
+<li>如果补电机会少，看行车发电机的能力，假如有60A的充电能力，每天行车4-5小时，可以选择250-300Ah的电瓶，保证每天都有满电用。再大就是浪费了，充不满的电瓶，就算有1000Ah，又有什么用呢？反而是累赘。</li>
+<li>有钱有闲有兴趣，户外生活频率高的，按能力尽量往高配，你会发现所有的投入都值。</li>
+<li>使用频率不高，满足最基本的户外水电需求再往上高档配。<br>有钱有任性的权力，可以不考虑这条。但不是说你买得起，一下几十上百万拿出来全部配置赶最好的选就叫有钱了（回头一看，这个没鸟用，那个是浪费后悔了），而是回头发现不实用，一年用不了几回，但没事丢车库里吃灰好了，我要的就是一年就算只用一天，也要那天用得方便舒服，才可以任性。</li>
+</ol>
+<h2 id="选好200Ah的电瓶，但各种价格都有，我该怎么选"><a href="#选好200Ah的电瓶，但各种价格都有，我该怎么选" class="headerlink" title="选好200Ah的电瓶，但各种价格都有，我该怎么选"></a>选好200Ah的电瓶，但各种价格都有，我该怎么选</h2><ol>
+<li>便宜有便宜的原因，贵有贵的理由，贵的至少不会比便宜的更差，这是普适原则</li>
+<li>以某国产最好的品牌为例，一节 3.2V200Ah 电芯价格在 400 以内，4节1600元，根据“电瓶80%的成本在电芯”，2000元是电瓶合理的价格，太低肯定有原因（但绝不是因为厂家直销）。<br>厂家会有些附加值，比如外观工艺更好，数码显示给改液晶，增加一些常用的接口等，再上浮个10%也是可以接受的，但要卖到3000甚至更高就是坑人了。</li>
+<li>有些明确说了用的是小牌电芯或进口电芯，电芯价格、性能参数在官方都是可以查到的，按同样的方式可计算其合理价格区间。</li>
+</ol>
+<h2 id="容量定了，价格也在合理范围，怎么判断有没有坑"><a href="#容量定了，价格也在合理范围，怎么判断有没有坑" class="headerlink" title="容量定了，价格也在合理范围，怎么判断有没有坑"></a>容量定了，价格也在合理范围，怎么判断有没有坑</h2><ol>
+<li>这个就比较难了，主要看运气</li>
+<li>所有的商家都说我们用的是最好的/进口的电芯，还有各种贴图给你证明。但我们是用户，不是评测，谁买个新电瓶还拆开检查下？就算检查普通人能看懂？所以一切吹嘘皆忽视。</li>
+<li>所有商家都说我们用的是最好的保护板，实际只会配一个功能将将够用最便宜的。</li>
+<li>所有商家都说同行虚标。我买过6-80元一节的18650不下20种，包括三无/杂牌/品牌/进口，测试相差远不如价格大，而且无一例外，都虚标多少而已，所以这块不能太较真。</li>
+<li>选可信度高的品牌/商家，不然说好200Ah, 实际只有80Ah，说好的品牌全新电芯，收到的可能是杂牌二手电芯。好的牌子，所有合理价格上浮10%以下的电瓶，没把握不要买。生意毕竟要赚钱的，怎么能让所有人都买到质量好价格又合理的产品，这不科学。</li>
+</ol>
+<blockquote>
+<p>最大的坑：退货。<br>法规原因，不能邮寄大功率电瓶，快递和物流，都不会接个人单。<br>那我买来可以发？法规也会有漏洞的嘛，但有漏洞不代表每个人都有能钻。<br>就算卖家支持无理由退货，也要有退不了的心理准备。<br>大胆虚标、假参数、以次充新，部分卖家就是就是指着坑你退不了。</p>
+</blockquote>
+<h2 id="全靠运气啊？那我选择时怎么比较，到底看什么"><a href="#全靠运气啊？那我选择时怎么比较，到底看什么" class="headerlink" title="全靠运气啊？那我选择时怎么比较，到底看什么"></a>全靠运气啊？那我选择时怎么比较，到底看什么</h2><p>这就问对了，虚标与否，电芯啥牌子，我们是无法控制的。选择购时更应该关注参数（商家要参数也标假，大多时没有办法，参考前面的退货坑）。</p>
+<h3 id="技术流选择法"><a href="#技术流选择法" class="headerlink" title="技术流选择法"></a>技术流选择法</h3><ol>
+<li>持续放电电流：决定能用多大功率的电器。<br>比如一个12V400Ah的电瓶，持续放电只能100A，电瓶看似很大，但最大功率不计损耗只有1200W（不过相比12V100Ah的电瓶，它能延长4倍的使用时间)</li>
+<li>最大充电电流：这个影响充电时间。至少要高于行车充电能力。</li>
+<li>允许工作温度范围：当然是范围的好，如果40℃就不能用了，显然不适合在车上用。这个涉及安全，比是不是足容重要得多。</li>
+<li>成品内阻（注意不是单电芯内阻）：越小越好，20毫欧以上就不要了，至少价格要打折再打折。内阻大的自发热会很严重。而且这一项用户是比较好检测的（内阻仪不贵），不太好虚标。<br>国内某品牌 3.2V200Ah 全新电芯内阻是 0.2 毫欧，4串0.8。某电瓶宣称采用该电芯，但成品电瓶总内阻到了20 毫欧，就算不能以此判断其为假电芯，也可以判断其制造工艺极差，所用的连接铜片、导线偷工减料了，甚至可能是二手电芯。这条比较实用。</li>
+<li>放电截止电压：正常的铁锂电瓶可以放到10V，个别的可到9.5V。如果成品电瓶放到11V就没电了……这里有问题。</li>
+<li>充电时满电电压：正常在14.0-14.6间。<br>如果某个或几个电芯二手太久或质量太差，其电压达不到3.2，比如只有2.6，那么其它电池充饱后，此时均衡板一直在努力工作想将它的电压提上来但做不到，表现是充电一直发热，但电压就是上不去。但JS也会有说法，我们独特的xxx先进技术，不需要太高的电压就可以充电，1.3x就是可充满。这种先进技术还是让卖家留着当传家宝好了。</li>
+<li>还有很多参数，但多是通用的大同小异看看就好，上面几个是比较有参考意义的。</li>
+<li>有些通篇都是先进工艺，进口技术，卖家好评图片，就是羞于标参数的，直接放弃。</li>
+<li>外观检测，知道了电芯型号，单芯的尺寸重量都可以查到。<br>几个组合在一起，就那么几种排法，总尺寸只有几种情况，再加上外壳，尺寸和重量总不能差太远吧？明显差距大的自然就是假货。重量不能更轻，也不能重太多（就加外壳重量），重太多的话肯定是其它电芯或更多块的小电芯组成的。<br>（磷酸铁锂按目前的技术，12V电瓶每100Ah重在10Kg左右）</li>
+</ol>
+<blockquote>
+<p>这些可以在马云家排除80%的坑，尤其看着价格很有吸引力的宝贝时，不至于脑子一热就决定。</p>
+</blockquote>
+<h3 id="社工流选择法"><a href="#社工流选择法" class="headerlink" title="社工流选择法"></a>社工流选择法</h3><ol>
+<li>是否允许开盖检查？<br>能开箱的话至少目测新旧、电芯参数是可以判断的。但很多电瓶用胶粘死或铆钉钉死的不让开，或者贴了标签撕毁不保。电瓶不是技术产品（电芯是），买来的标准电芯、买来的保护板，再加个壳，能看坏什么？为什么怕人看？是电芯有假还是工艺拿不出手？</li>
+<li>带充电器一起卖的，提出能否不要充电器？是否可以用其它标准充电器充电？<br>不行？都是标准电芯串成的电瓶，为什么非要用你家的充电器？是电瓶有非标猫腻？还是要强制搭售垃圾充电器？<br>可以不要充电器，减30块？为什么大电瓶标配这么垃圾的充电器？是因为电瓶只能用这个规格，大电流的充电器也充不快吗？<br>可以，你用什么充电器都可以充，发电机可以，光伏板可以，开关电源可以？那问题更大的，锂电不是铅酸给个电压就可以充电，充电器要满足一定的标准（一般先恒流，好一点的还可以先唤醒，再恒压充，充满会自停或以保护电压浮充），为什么你可以不挑食随便充？难道你给我免费内置了充电器，所以给个电压都行？</li>
+</ol>
+<blockquote>
+<p>前提是你可以退货发货，不然卖家都可以答应，反正你也退不掉。  </p>
+</blockquote>
+<blockquote>
+<p>很多自媒体会做一些电瓶开箱及使用评测，可以参考，不能相信他们的结论。<br>有些纯粹是为了刷流量存在感，有人看就行，内容是否专业是否正确不重要。<br>有些是拿了赞助费的，这种没他们说的那么好，说不好的也不一定是真不好。<br>有些是自己不会用，也不知道专业测试方法，纯粹瞎黑的。<br>即懂又有独立立场真评测的，有，但不一定正好被你看到。</p>
+</blockquote>
+<h2 id="自组电瓶需要很高的技术吗"><a href="#自组电瓶需要很高的技术吗" class="headerlink" title="自组电瓶需要很高的技术吗"></a>自组电瓶需要很高的技术吗</h2><p>成品电瓶坑太多，自组电瓶怎么样，对技术要求高吗？<br>不不不，只要具备初中的电学知识就可以干这个活。<br>但是，它对技术以外的活要求挺高的。</p>
+<p>难点主要在选择一致好的电芯，挑选可靠的保护板，然后是焊接技术与手工活。锂电怕高温，焊接时间短了不牢靠，长了有风险。电芯铜片连接部，操作时也是有风险的，过程中不能造成电芯短路，比如拧螺丝时扳手碰到了其它接线柱，这不是心里知道就可以不犯错的，考验的是平时的动手能力和习惯。<br>比如你知道所有需要注意的事项和操作要领，但你就是做不到卖油翁轻松做到的事。</p>
+<h2 id="太阳能板到底有没有必要"><a href="#太阳能板到底有没有必要" class="headerlink" title="太阳能板到底有没有必要"></a>太阳能板到底有没有必要</h2><p>拿钱宣传的自媒体，说停这生活几天了，装了xxx太阳板，全靠太阳能就够生活用电了。  </p>
+<p>想想我们平时停车，是优先阴凉的地方还是曝晒的地方？<br>为了晒电池，故意停在太阳下生活，小功率的电器是有电用了，但你在车里生活半小时试试？没有悠闲，只有满头大汗。开空调？太阳能还补不回这个消耗呢，为什么不选择阴凉的地方？<br>但行车时，可由不得我们选择，既然必须被晒，车顶面积也够，当然要安装，白来的电能总比没有好。  </p>
+<p>移动太阳能板？功率做不大，长时停留某地进可以用（限制太多，人得附近守着），聊胜于无。<br>100W的移动光伏板，普通天气晒半天，能充个 0.1-0.2 度电吧。</p>
+<p>硬板比折叠软板效率略高，同样一100W面积会小一些。<br>硬板买成品不适合移动，可以按车内空间买小板自组成最佳尺寸，方便收纳和移动，多块并联增加容量。但受限空间，总功率也做不太大，200W能补个0.5度电的话小车也能用一阵。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A3%B7%E9%85%B8%E9%93%81%E9%94%82/" rel="tag"># 磷酸铁锂</a>
+              <a href="/tags/18650/" rel="tag"># 18650</a>
+              <a href="/tags/%E5%8F%8C%E7%94%B5%E7%93%B6/" rel="tag"># 双电瓶</a>
+              <a href="/tags/%E6%88%BF%E8%BD%A6/" rel="tag"># 房车</a>
+              <a href="/tags/%E5%BA%8A%E8%BD%A6/" rel="tag"># 床车</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/01/18/20190118-VPS%E5%9F%BA%E6%9C%AC%E5%AE%89%E5%85%A8%E8%AE%BE%E7%BD%AE/" rel="prev" title="VPS基本安全设置">
+      <i class="fa fa-chevron-left"></i> VPS基本安全设置
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E5%B9%B6%E8%81%94%E5%89%AF%E7%94%B5%E7%93%B6"><span class="nav-number">1.</span> <span class="nav-text">简单并联副电瓶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E7%94%B5%E7%93%B6%E6%89%8B%E5%8A%A8%E9%9A%94%E7%A6%BB"><span class="nav-number">2.</span> <span class="nav-text">双电瓶手动隔离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E7%94%B5%E7%93%B6%E8%87%AA%E5%8A%A8%E9%9A%94%E7%A6%BB"><span class="nav-number">3.</span> <span class="nav-text">双电瓶自动隔离</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E8%A3%85%E4%BD%9C%E5%9D%8A%E8%AF%B4%E8%87%AA%E5%8A%A8%E9%9A%94%E7%A6%BB%E6%A8%A1%E5%9D%97%E5%85%A8%E6%99%BA%E8%83%BD%EF%BC%8C%E6%89%8B%E5%8A%A8%E5%BC%80%E5%85%B3%E6%B2%A1%E6%9C%89%E5%BF%85%E8%A6%81"><span class="nav-number">3.1.</span> <span class="nav-text">改装作坊说自动隔离模块全智能，手动开关没有必要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E7%94%B5%E7%93%B6%E9%9A%94%E7%A6%BB%E6%99%BA%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="nav-number">3.2.</span> <span class="nav-text">双电瓶隔离智能模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%9C%E5%80%9F%E7%94%B5%E5%90%AF%E5%8A%A8%E2%80%9D%E5%9D%91"><span class="nav-number">3.3.</span> <span class="nav-text">“借电启动”坑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A3%B7%E9%85%B8%E9%93%81%E9%94%82%E7%94%B5%E6%B1%A0"><span class="nav-number">4.</span> <span class="nav-text">磷酸铁锂电池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%82%E7%94%B5%E6%B1%A0%E5%85%85%E7%94%B5%E6%9C%89%E4%BD%95%E9%9A%BE%E7%82%B9"><span class="nav-number">5.</span> <span class="nav-text">锂电池充电有何难点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E4%BA%BA%E5%8F%8D%E9%A9%B3%EF%BC%8C%E6%88%91%E8%BD%A6%E4%B8%8A%E5%B0%B1%E6%98%AF%E7%9B%B4%E6%8E%A5%E5%85%85%E7%9A%84%E5%87%A0%E4%B8%AA%E6%9C%88%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%E6%B2%A1%E6%9C%89"><span class="nav-number">5.1.</span> <span class="nav-text">有人反驳，我车上就是直接充的几个月了什么问题没有</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%94%A8%E6%96%B9%E6%A1%88%E4%B9%8B%E9%93%81%E9%94%82%E7%94%B5%E7%93%B6%E9%9A%94%E7%A6%BB"><span class="nav-number">6.</span> <span class="nav-text">实用方案之铁锂电瓶隔离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%9F%E8%B1%AA%E6%87%92%E4%BA%BA%E6%96%B9%E6%A1%88"><span class="nav-number">7.</span> <span class="nav-text">土豪懒人方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E9%9C%80%E8%A6%81%E5%A4%9A%E5%A4%A7%E7%9A%84%E7%94%B5%E7%93%B6"><span class="nav-number">8.</span> <span class="nav-text">最小需要多大的电瓶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A6%81%E4%B8%8D%E8%A6%81%E4%B8%8A800-1000%E7%9A%84%E5%A4%A7%E7%94%B5%E7%93%B6"><span class="nav-number">9.</span> <span class="nav-text">要不要上800&#x2F;1000的大电瓶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E5%A5%BD200Ah%E7%9A%84%E7%94%B5%E7%93%B6%EF%BC%8C%E4%BD%86%E5%90%84%E7%A7%8D%E4%BB%B7%E6%A0%BC%E9%83%BD%E6%9C%89%EF%BC%8C%E6%88%91%E8%AF%A5%E6%80%8E%E4%B9%88%E9%80%89"><span class="nav-number">10.</span> <span class="nav-text">选好200Ah的电瓶，但各种价格都有，我该怎么选</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%B9%E9%87%8F%E5%AE%9A%E4%BA%86%EF%BC%8C%E4%BB%B7%E6%A0%BC%E4%B9%9F%E5%9C%A8%E5%90%88%E7%90%86%E8%8C%83%E5%9B%B4%EF%BC%8C%E6%80%8E%E4%B9%88%E5%88%A4%E6%96%AD%E6%9C%89%E6%B2%A1%E6%9C%89%E5%9D%91"><span class="nav-number">11.</span> <span class="nav-text">容量定了，价格也在合理范围，怎么判断有没有坑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E9%9D%A0%E8%BF%90%E6%B0%94%E5%95%8A%EF%BC%9F%E9%82%A3%E6%88%91%E9%80%89%E6%8B%A9%E6%97%B6%E6%80%8E%E4%B9%88%E6%AF%94%E8%BE%83%EF%BC%8C%E5%88%B0%E5%BA%95%E7%9C%8B%E4%BB%80%E4%B9%88"><span class="nav-number">12.</span> <span class="nav-text">全靠运气啊？那我选择时怎么比较，到底看什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%B5%81%E9%80%89%E6%8B%A9%E6%B3%95"><span class="nav-number">12.1.</span> <span class="nav-text">技术流选择法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BE%E5%B7%A5%E6%B5%81%E9%80%89%E6%8B%A9%E6%B3%95"><span class="nav-number">12.2.</span> <span class="nav-text">社工流选择法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E7%BB%84%E7%94%B5%E7%93%B6%E9%9C%80%E8%A6%81%E5%BE%88%E9%AB%98%E7%9A%84%E6%8A%80%E6%9C%AF%E5%90%97"><span class="nav-number">13.</span> <span class="nav-text">自组电瓶需要很高的技术吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%AA%E9%98%B3%E8%83%BD%E6%9D%BF%E5%88%B0%E5%BA%95%E6%9C%89%E6%B2%A1%E6%9C%89%E5%BF%85%E8%A6%81"><span class="nav-number">14.</span> <span class="nav-text">太阳能板到底有没有必要</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Sean"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">Sean</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/seanto" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;seanto" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tuxw2005@gmail.com" title="E-Mail → mailto:tuxw2005@gmail.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://gotgit.readthedocs.io/en/latest/" title="https:&#x2F;&#x2F;gotgit.readthedocs.io&#x2F;en&#x2F;latest&#x2F;" rel="noopener" target="_blank">Git 权威指南</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sean</span>
+</div>
+  <div class="powered-by">
+  Powerd: <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme:  <a target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT</a>  |  Hosted:   <a target="_blank" href="https://github.com">GitHub</a> <a target="_blank" href="https://pages.github.com">Pages</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
